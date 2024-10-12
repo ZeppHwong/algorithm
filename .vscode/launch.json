@@ -20,6 +20,14 @@
         },
         {
             "type": "java",
+            "name": "Counter",
+            "request": "launch",
+            "mainClass": "cn.learn.chapter01Foundation.Counter",
+            "args": "5 5",
+            "projectName": "algorithm_b88195fe"
+        },
+        {
+            "type": "java",
             "name": "BinaryIn",
             "request": "launch",
             "mainClass": "cn.learn.common.BinaryIn",
