@@ -1,5 +1,8 @@
 package cn.learn.chapter01Foundation;
 
+import cn.learn.common.StdIn;
+import cn.learn.common.StdOut;
+
 /**
  *  The {@code UF} class represents a <em>union–find data type</em>
  *  (also known as the <em>disjoint-sets data type</em>).

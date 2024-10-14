@@ -3,7 +3,8 @@ package cn.learn.chapter01Foundation;
 import cn.learn.common.StdIn;
 import cn.learn.common.StdOut;
 
-******************************************************************************
+
+/*******************************************************************************
  *  Compilation:  javac QuickUnionUF.java
  *  Execution:  java QuickUnionUF < input.txt
  *  Dependencies: StdIn.java StdOut.java
@@ -14,6 +15,8 @@ import cn.learn.common.StdOut;
  *  Quick-union algorithm.
  *
  ******************************************************************************/
+
+
 
 /**
  *  The {@code QuickUnionUF} class represents a <em>union–find data type</em>
