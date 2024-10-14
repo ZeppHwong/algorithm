@@ -1,8 +1,5 @@
 package cn.learn.chapter01Foundation;
 
-import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Arrays;
 
 import cn.learn.common.In;
@@ -64,7 +61,7 @@ public class BinarySearch {
      */
     public static void main(String[] args) {
         // read the integers from a file
-        In in = new In("src/cn/learn/chapter01Foundation/data/" + args[0]);
+        In in = new In("src/cn/learn/resources/data/" + args[0]);
         int[] allowlist = in.readAllInts();
 
         // sort the array
