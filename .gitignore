@@ -6,8 +6,8 @@
 *.iml
 out
 gen
-/src/cn/learn/resources/data/largeDG.txt
-/src/cn/learn/resources/data/largeEWG.txt
-/src/cn/learn/resources/data/largeEWD.txt
-/src/cn/learn/resources/data/largeG.txt
-/src/cn/learn/resources/data/leipzig1M.txt
+resources/data/largeDG.txt
+resources/data/largeEWG.txt
+resources/data/largeEWD.txt
+resources/data/largeG.txt
+resources/data/leipzig1M.txt

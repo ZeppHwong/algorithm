@@ -1,4 +1,4 @@
-package cn.learn.chapter01Foundation;
+package cn.learn.fundametals;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package cn.learn.chapter01Foundation;
+package cn.learn.fundametals;
 
     import cn.learn.common.In;
     import cn.learn.common.StdOut;
