@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "TraceInsertion",
+            "request": "launch",
+            "mainClass": "cn.learn.sorting.TraceInsertion",
+            "projectName": "algorithm_b88195fe"
+        },
+        {
+            "type": "java",
+            "name": "InsertionX",
+            "request": "launch",
+            "mainClass": "cn.learn.sorting.InsertionX",
+            "projectName": "algorithm_b88195fe"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
@@ -15,7 +29,6 @@
             "name": "BinarySearch",
             "request": "launch",
             "mainClass": "cn.learn.chapter01Foundation.BinarySearch",
-            // "args": "tiny.txt",
             "projectName": "algorithm_b88195fe"
         },
         {
