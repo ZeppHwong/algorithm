@@ -1,4 +1,4 @@
-package cn.learn.sorting;
+package cn.learn.sorting.merge;
 
 /******************************************************************************
  *  Compilation:  javac MergeX.java

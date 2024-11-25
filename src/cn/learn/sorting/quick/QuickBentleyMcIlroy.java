@@ -1,4 +1,4 @@
-package cn.learn.sorting;
+package cn.learn.sorting.quick;
 
 import cn.learn.common.StdIn;
 import cn.learn.common.StdOut;

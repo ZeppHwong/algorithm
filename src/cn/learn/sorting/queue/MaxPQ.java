@@ -1,16 +1,17 @@
-package cn.learn.sorting;
+package cn.learn.sorting.queue;
 
 /******************************************************************************
- *  Compilation:  javac MinPQ.java
- *  Execution:    java MinPQ < input.txt
+ *  Compilation:  javac MaxPQ.java
+ *  Execution:    java MaxPQ < input.txt
  *  Dependencies: StdIn.java StdOut.java
  *  Data files:   https://algs4.cs.princeton.edu/24pq/tinyPQ.txt
  *
- *  Generic min priority queue implementation with a binary heap.
- *  Can be used with a comparator instead of the natural order.
+ *  Generic max priority queue implementation with a binary heap.
+ *  Can be used with a comparator instead of the natural order,
+ *  but the generic Key type must still be Comparable.
  *
- *  % java MinPQ < tinyPQ.txt
- *  E A E (6 left on pq)
+ *  % java MaxPQ < tinyPQ.txt
+ *  Q X P (6 left on pq)
  *
  *  We use a one-based array to simplify parent and child calculations.
  *
@@ -27,14 +28,14 @@ import cn.learn.common.StdIn;
 import cn.learn.common.StdOut;
  
  /**
-  *  The {@code MinPQ} class represents a priority queue of generic keys.
-  *  It supports the usual <em>insert</em> and <em>delete-the-minimum</em>
-  *  operations, along with methods for peeking at the minimum key,
+  *  The {@code MaxPQ} class represents a priority queue of generic keys.
+  *  It supports the usual <em>insert</em> and <em>delete-the-maximum</em>
+  *  operations, along with methods for peeking at the maximum key,
   *  testing if the priority queue is empty, and iterating through
   *  the keys.
   *  <p>
   *  This implementation uses a <em>binary heap</em>.
-  *  The <em>insert</em> and <em>delete-the-minimum</em> operations take
+  *  The <em>insert</em> and <em>delete-the-maximum</em> operations take
   *  &Theta;(log <em>n</em>) amortized time, where <em>n</em> is the number
   *  of elements in the priority queue. This is an amortized bound
   *  (and not a worst-case bound) because of array resizing operations.
@@ -52,7 +53,8 @@ import cn.learn.common.StdOut;
   *
   *  @param <Key> the generic type of key on this priority queue
   */
- public class MinPQ<Key> implements Iterable<Key> {
+ 
+ public class MaxPQ<Key> implements Iterable<Key> {
      private Key[] pq;                    // store items at indices 1 to n
      private int n;                       // number of items on priority queue
      private Comparator<Key> comparator;  // optional comparator
@@ -62,7 +64,7 @@ import cn.learn.common.StdOut;
       *
       * @param  initCapacity the initial capacity of this priority queue
       */
-     public MinPQ(int initCapacity) {
+     public MaxPQ(int initCapacity) {
          pq = (Key[]) new Object[initCapacity + 1];
          n = 0;
      }
@@ -70,7 +72,7 @@ import cn.learn.common.StdOut;
      /**
       * Initializes an empty priority queue.
       */
-     public MinPQ() {
+     public MaxPQ() {
          this(1);
      }
  
@@ -81,7 +83,7 @@ import cn.learn.common.StdOut;
       * @param  initCapacity the initial capacity of this priority queue
       * @param  comparator the order in which to compare the keys
       */
-     public MinPQ(int initCapacity, Comparator<Key> comparator) {
+     public MaxPQ(int initCapacity, Comparator<Key> comparator) {
          this.comparator = comparator;
          pq = (Key[]) new Object[initCapacity + 1];
          n = 0;
@@ -92,26 +94,27 @@ import cn.learn.common.StdOut;
       *
       * @param  comparator the order in which to compare the keys
       */
-     public MinPQ(Comparator<Key> comparator) {
+     public MaxPQ(Comparator<Key> comparator) {
          this(1, comparator);
      }
  
      /**
       * Initializes a priority queue from the array of keys.
-      * <p>
       * Takes time proportional to the number of keys, using sink-based heap construction.
       *
       * @param  keys the array of keys
       */
-     public MinPQ(Key[] keys) {
+     public MaxPQ(Key[] keys) {
          n = keys.length;
          pq = (Key[]) new Object[keys.length + 1];
          for (int i = 0; i < n; i++)
              pq[i+1] = keys[i];
          for (int k = n/2; k >= 1; k--)
              sink(k);
-         assert isMinHeap();
+         assert isMaxHeap();
      }
+ 
+ 
  
      /**
       * Returns true if this priority queue is empty.
@@ -133,12 +136,12 @@ import cn.learn.common.StdOut;
      }
  
      /**
-      * Returns a smallest key on this priority queue.
+      * Returns a largest key on this priority queue.
       *
-      * @return a smallest key on this priority queue
+      * @return a largest key on this priority queue
       * @throws NoSuchElementException if this priority queue is empty
       */
-     public Key min() {
+     public Key max() {
          if (isEmpty()) throw new NoSuchElementException("Priority queue underflow");
          return pq[1];
      }
@@ -153,36 +156,38 @@ import cn.learn.common.StdOut;
          pq = temp;
      }
  
+ 
      /**
       * Adds a new key to this priority queue.
       *
-      * @param  x the key to add to this priority queue
+      * @param  x the new key to add to this priority queue
       */
      public void insert(Key x) {
+ 
          // double size of array if necessary
          if (n == pq.length - 1) resize(2 * pq.length);
  
          // add x, and percolate it up to maintain heap invariant
          pq[++n] = x;
          swim(n);
-         assert isMinHeap();
+         assert isMaxHeap();
      }
  
      /**
-      * Removes and returns a smallest key on this priority queue.
+      * Removes and returns a largest key on this priority queue.
       *
-      * @return a smallest key on this priority queue
+      * @return a largest key on this priority queue
       * @throws NoSuchElementException if this priority queue is empty
       */
-     public Key delMin() {
+     public Key delMax() {
          if (isEmpty()) throw new NoSuchElementException("Priority queue underflow");
-         Key min = pq[1];
+         Key max = pq[1];
          exch(1, n--);
          sink(1);
          pq[n+1] = null;     // to avoid loitering and help with garbage collection
          if ((n > 0) && (n == (pq.length - 1) / 4)) resize(pq.length / 2);
-         assert isMinHeap();
-         return min;
+         assert isMaxHeap();
+         return max;
      }
  
  
@@ -191,7 +196,7 @@ import cn.learn.common.StdOut;
      ***************************************************************************/
  
      private void swim(int k) {
-         while (k > 1 && greater(k/2, k)) {
+         while (k > 1 && less(k/2, k)) {
              exch(k/2, k);
              k = k/2;
          }
@@ -200,8 +205,8 @@ import cn.learn.common.StdOut;
      private void sink(int k) {
          while (2*k <= n) {
              int j = 2*k;
-             if (j < n && greater(j, j+1)) j++;
-             if (!greater(k, j)) break;
+             if (j < n && less(j, j+1)) j++;
+             if (!less(k, j)) break;
              exch(k, j);
              k = j;
          }
@@ -210,12 +215,12 @@ import cn.learn.common.StdOut;
     /***************************************************************************
      * Helper functions for compares and swaps.
      ***************************************************************************/
-     private boolean greater(int i, int j) {
+     private boolean less(int i, int j) {
          if (comparator == null) {
-             return ((Comparable<Key>) pq[i]).compareTo(pq[j]) > 0;
+             return ((Comparable<Key>) pq[i]).compareTo(pq[j]) < 0;
          }
          else {
-             return comparator.compare(pq[i], pq[j]) > 0;
+             return comparator.compare(pq[i], pq[j]) < 0;
          }
      }
  
@@ -225,8 +230,8 @@ import cn.learn.common.StdOut;
          pq[j] = swap;
      }
  
-     // is pq[1..n] a min heap?
-     private boolean isMinHeap() {
+     // is pq[1..n] a max heap?
+     private boolean isMaxHeap() {
          for (int i = 1; i <= n; i++) {
              if (pq[i] == null) return false;
          }
@@ -234,41 +239,45 @@ import cn.learn.common.StdOut;
              if (pq[i] != null) return false;
          }
          if (pq[0] != null) return false;
-         return isMinHeapOrdered(1);
+         return isMaxHeapOrdered(1);
      }
  
-     // is subtree of pq[1..n] rooted at k a min heap?
-     private boolean isMinHeapOrdered(int k) {
+     // is subtree of pq[1..n] rooted at k a max heap?
+     private boolean isMaxHeapOrdered(int k) {
          if (k > n) return true;
          int left = 2*k;
          int right = 2*k + 1;
-         if (left  <= n && greater(k, left))  return false;
-         if (right <= n && greater(k, right)) return false;
-         return isMinHeapOrdered(left) && isMinHeapOrdered(right);
+         if (left  <= n && less(k, left))  return false;
+         if (right <= n && less(k, right)) return false;
+         return isMaxHeapOrdered(left) && isMaxHeapOrdered(right);
      }
  
  
+    /***************************************************************************
+     * Iterator.
+     ***************************************************************************/
+ 
      /**
       * Returns an iterator that iterates over the keys on this priority queue
-      * in ascending order.
-      * <p>
+      * in descending order.
       * The iterator doesn't implement {@code remove()} since it's optional.
       *
-      * @return an iterator that iterates over the keys in ascending order
+      * @return an iterator that iterates over the keys in descending order
       */
      public Iterator<Key> iterator() {
          return new HeapIterator();
      }
  
      private class HeapIterator implements Iterator<Key> {
+ 
          // create a new pq
-         private MinPQ<Key> copy;
+         private MaxPQ<Key> copy;
  
          // add all items to copy of heap
          // takes linear time since already in heap order so no keys move
          public HeapIterator() {
-             if (comparator == null) copy = new MinPQ<Key>(size());
-             else                    copy = new MinPQ<Key>(size(), comparator);
+             if (comparator == null) copy = new MaxPQ<Key>(size());
+             else                    copy = new MaxPQ<Key>(size(), comparator);
              for (int i = 1; i <= n; i++)
                  copy.insert(pq[i]);
          }
@@ -278,21 +287,21 @@ import cn.learn.common.StdOut;
  
          public Key next() {
              if (!hasNext()) throw new NoSuchElementException();
-             return copy.delMin();
+             return copy.delMax();
          }
      }
  
      /**
-      * Unit tests the {@code MinPQ} data type.
+      * Unit tests the {@code MaxPQ} data type.
       *
       * @param args the command-line arguments
       */
      public static void main(String[] args) {
-         MinPQ<String> pq = new MinPQ<String>();
+         MaxPQ<String> pq = new MaxPQ<String>();
          while (!StdIn.isEmpty()) {
              String item = StdIn.readString();
              if (!item.equals("-")) pq.insert(item);
-             else if (!pq.isEmpty()) StdOut.print(pq.delMin() + " ");
+             else if (!pq.isEmpty()) StdOut.print(pq.delMax() + " ");
          }
          StdOut.println("(" + pq.size() + " left on pq)");
      }

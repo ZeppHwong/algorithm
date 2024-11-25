@@ -1,9 +1,11 @@
-package cn.learn.sorting;
+package cn.learn.sorting.quick;
 
 import java.util.Stack;
 
 import cn.learn.common.StdIn;
 import cn.learn.common.StdOut;
+import cn.learn.sorting.Transaction;
+import cn.learn.sorting.queue.MinPQ;
 
 /******************************************************************************
  *  Compilation:  javac TopM.java
