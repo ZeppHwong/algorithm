@@ -1,4 +1,4 @@
-package cn.learn.searching;
+package cn.learn.searching.st;
 
 /******************************************************************************
 *  Compilation:  javac BinarySearchST.java
@@ -29,6 +29,7 @@ import java.util.NoSuchElementException;
 
 import cn.learn.common.StdIn;
 import cn.learn.common.StdOut;
+import cn.learn.sorting.queue.Queue;
 
 /**
  * The {@code BST} class represents an ordered symbol table of generic

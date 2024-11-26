@@ -1,4 +1,4 @@
-package cn.learn.searching;
+package cn.learn.searching.st;
 
 /******************************************************************************
  *  Compilation:  javac ST.java

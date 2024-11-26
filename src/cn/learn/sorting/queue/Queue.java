@@ -1,4 +1,4 @@
-package cn.learn.searching;
+package cn.learn.sorting.queue;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;

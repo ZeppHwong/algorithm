@@ -1,7 +1,8 @@
-package cn.learn.searching;
+package cn.learn.searching.st;
 
 import cn.learn.common.StdIn;
 import cn.learn.common.StdOut;
+import cn.learn.sorting.queue.Queue;
 
 /******************************************************************************
  *  Compilation:  javac SequentialSearchST.java

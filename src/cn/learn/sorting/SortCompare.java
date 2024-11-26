@@ -26,6 +26,18 @@ package cn.learn.sorting;
 import cn.learn.common.StdOut;
 import cn.learn.common.StdRandom;
 import cn.learn.common.Stopwatch;
+import cn.learn.sorting.fundamental.BinaryInsertion;
+import cn.learn.sorting.fundamental.Insertion;
+import cn.learn.sorting.fundamental.InsertionX;
+import cn.learn.sorting.fundamental.Selection;
+import cn.learn.sorting.fundamental.Shell;
+import cn.learn.sorting.heap.Heap;
+import cn.learn.sorting.merge.Merge;
+import cn.learn.sorting.merge.MergeBU;
+import cn.learn.sorting.merge.MergeX;
+import cn.learn.sorting.quick.Quick;
+import cn.learn.sorting.quick.Quick3way;
+import cn.learn.sorting.quick.QuickX;
 
  public class SortCompare {
  
