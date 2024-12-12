@@ -1,4 +1,4 @@
-package cn.learn.searching.st;
+package cn.learn.searching.hashst;
 
 import cn.learn.common.StdIn;
 import cn.learn.common.StdOut;

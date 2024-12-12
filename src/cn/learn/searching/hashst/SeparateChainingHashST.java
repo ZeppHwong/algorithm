@@ -1,7 +1,10 @@
-package cn.learn.searching.st;
+package cn.learn.searching.hashst;
 
 import cn.learn.common.StdIn;
 import cn.learn.common.StdOut;
+import cn.learn.searching.tree.BST;
+import cn.learn.searching.tree.BinarySearchST;
+import cn.learn.searching.tree.RedBlackBST;
 import cn.learn.sorting.queue.Queue;
 
 /******************************************************************************

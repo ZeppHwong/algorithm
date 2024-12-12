@@ -1,4 +1,4 @@
-package cn.learn.searching.st;
+package cn.learn.searching.tree;
 
 /******************************************************************************
  *  Compilation:  javac RedBlackBST.java
@@ -33,6 +33,10 @@ package cn.learn.searching.st;
 
 import cn.learn.common.StdIn;
 import cn.learn.common.StdOut;
+import cn.learn.searching.st.ST;
+import cn.learn.searching.hashst.LinearProbingHashST;
+import cn.learn.searching.hashst.SeparateChainingHashST;
+import cn.learn.searching.hashst.SequentialSearchST;
 import cn.learn.sorting.queue.Queue;
 
  /**

@@ -1,6 +1,7 @@
 package cn.learn.searching.st;
 
 import cn.learn.common.StdOut;
+import cn.learn.searching.tree.BST;
 
 public class TestBST {
     public static void main(String[] args) {
